@@ -1,0 +1,801 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. George, Utah Trip Itinerary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .timeline-item {
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 24px;
+            bottom: -24px;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -5px;
+            top: 24px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .flight {
+            background-color: #ebf5ff;
+            border-left: 4px solid #3b82f6;
+        }
+        .transport {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .accommodation {
+            background-color: #ecfdf5;
+            border-left: 4px solid #10b981;
+        }
+        .personal {
+            background-color: #f3e8ff;
+            border-left: 4px solid #8b5cf6;
+        }
+        .activity {
+            background-color: #ffe4e6;
+            border-left: 4px solid #f43f5e;
+        }
+        .reminder {
+            background-color: #fff1f2;
+            border: 1px dashed #f43f5e;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab {
+            position: relative;
+            overflow: hidden;
+        }
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #3b82f6;
+        }
+        .weather-icon {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-8 text-white">
+                <h1 class="text-3xl font-bold">St. George, Utah Trip Itinerary</h1>
+                <p class="mt-2 text-blue-100">January 29-30, 2025</p>
+                <div class="flex items-center mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>St. George, Utah (MST) / Dallas, Texas (CST)</span>
+                </div>
+            </div>
+            
+            <!-- Trip Overview -->
+            <div class="p-6 bg-gray-50 border-b">
+                <h2 class="text-xl font-semibold mb-4">Trip Overview</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="font-medium">Duration</span>
+                        </div>
+                        <p class="mt-1">2 days (Jan 29-30, 2025)</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            <span class="font-medium">Accommodation</span>
+                        </div>
+                        <p class="mt-1">SpringHill Suites St. George</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                            </svg>
+                            <span class="font-medium">Purpose</span>
+                        </div>
+                        <p class="mt-1">Podcast Recording</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Weather Forecast -->
+            <div class="p-6 bg-white border-b">
+                <h2 class="text-xl font-semibold mb-4">Weather Forecast (St. George, UT)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                        <div class="mr-4">
+                            <svg class="weather-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                <circle cx="32" cy="32" r="12" fill="#f7b239"/>
+                                <path fill="#f7b239" d="M32 5v11M32 48v11M59 32H48M16 32H5M51.09 12.91l-7.78 7.78M20.69 43.31l-7.78 7.78M51.09 51.09l-7.78-7.78M20.69 20.69l-7.78-7.78"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-medium">January 29, 2025</h3>
+                            <p class="text-sm">High: 52°F / Low: 34°F</p>
+                            <p class="text-sm">Mostly sunny, light breeze</p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                        <div class="mr-4">
+                            <svg class="weather-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                <circle cx="32" cy="32" r="12" fill="#f7b239"/>
+                                <path fill="#f7b239" d="M32 5v11M32 48v11M59 32H48M16 32H5M51.09 12.91l-7.78 7.78M20.69 43.31l-7.78 7.78M51.09 51.09l-7.78-7.78M20.69 20.69l-7.78-7.78"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-medium">January 30, 2025</h3>
+                            <p class="text-sm">High: 54°F / Low: 36°F</p>
+                            <p class="text-sm">Clear skies, perfect for morning walk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Important Reminders -->
+            <div class="p-6 bg-white border-b">
+                <h2 class="text-xl font-semibold mb-4">Important Reminders</h2>
+                <div class="space-y-3">
+                    <div class="reminder p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            <span class="font-medium">Time Zone Difference</span>
+                        </div>
+                        <p class="mt-1 text-sm pl-7">St. George (MST) is 1 hour behind Dallas (CST). Adjust your watch upon arrival.</p>
+                    </div>
+                    <div class="reminder p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            <span class="font-medium">Podcast Materials</span>
+                        </div>
+                        <p class="mt-1 text-sm pl-7">Don't forget to bring your notes and materials for the "How to Delegate with Virtual Professionals" podcast.</p>
+                    </div>
+                    <div class="reminder p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            <span class="font-medium">Morning Walk Gear</span>
+                        </div>
+                        <p class="mt-1 text-sm pl-7">Pack appropriate walking shoes and layers for the morning walk. January temperatures in St. George can be chilly in the morning.</p>
+                    </div>
+                    <div class="reminder p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            <span class="font-medium">Car Rental Return</span>
+                        </div>
+                        <p class="mt-1 text-sm pl-7">Remember to refuel the rental car before returning it to avoid additional fees.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="flex border-b">
+                <button id="tab-jan29" class="tab active flex-1 py-4 px-6 text-center font-medium hover:bg-gray-50 transition">
+                    January 29, 2025
+                </button>
+                <button id="tab-jan30" class="tab flex-1 py-4 px-6 text-center font-medium hover:bg-gray-50 transition">
+                    January 30, 2025
+                </button>
+            </div>
+            
+            <!-- Tab Content -->
+            <div class="p-6">
+                <!-- Legend -->
+                <div class="mb-6 flex flex-wrap gap-3">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Flight</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Transport</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Accommodation</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Personal</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                        <span class="text-sm">Activity</span>
+                    </div>
+                </div>
+                
+                <!-- January 29 Schedule -->
+                <div id="content-jan29" class="tab-content active">
+                    <div class="space-y-6 pl-8">
+                        <!-- Flight -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-blue-500"></div>
+                            <div class="flight rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Flight: Dallas/Fort Worth (DFW) to St. George (SGU)</h3>
+                                        <p class="text-gray-600 mt-1">10:10 AM CST - 12:17 PM MST</p>
+                                    </div>
+                                    <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Flight</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Flight:</span> AA 4949, Operated by SkyWest Airlines as American Eagle</p>
+                                    <p><span class="font-medium">Seat:</span> 2C</p>
+                                    <p><span class="font-medium">Class:</span> Business (R)</p>
+                                    <p><span class="font-medium">Meals:</span> Lunch</p>
+                                    <p><span class="font-medium">Flight Duration:</span> 3 hours 7 minutes (accounting for time zone change)</p>
+                                    <div class="mt-2 p-2 bg-blue-50 rounded">
+                                        <p class="text-xs font-medium text-blue-800">REMINDER: Arrive at DFW airport at least 90 minutes before departure (8:40 AM CST)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Car Rental Pick-up -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-yellow-500"></div>
+                            <div class="transport rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Car Rental Pick-up</h3>
+                                        <p class="text-gray-600 mt-1">12:30 PM - 1:00 PM MST</p>
+                                    </div>
+                                    <div class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Transport</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Location:</span> St. George Regional Airport (SGU)</p>
+                                    <p><span class="font-medium">Address:</span> 4550 S. Airport Parkway, St George, UT 84790</p>
+                                    <p><span class="font-medium">Rental Company:</span> Enterprise Rent-A-Car</p>
+                                    <p><span class="font-medium">Confirmation #:</span> RES123456</p>
+                                    <div class="mt-2 p-2 bg-yellow-50 rounded">
+                                        <p class="text-xs font-medium text-yellow-800">REMINDER: Bring driver's license, credit card, and rental confirmation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Travel to Airbnb -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-yellow-500"></div>
+                            <div class="transport rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Travel to Airbnb</h3>
+                                        <p class="text-gray-600 mt-1">1:00 PM - 1:25 PM MST</p>
+                                    </div>
+                                    <div class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Transport</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Route:</span> St. George Regional Airport (SGU) to SpringHill Suites St. George Washington</p>
+                                    <p><span class="font-medium">Travel Time:</span> Approximately 25 minutes</p>
+                                    <p><span class="font-medium">Distance:</span> 15 miles</p>
+                                    <p><span class="font-medium">Directions:</span> Take Airport Pkwy to I-15 N, then exit 13 toward Washington</p>
+                                    <div class="mt-2 p-2 bg-yellow-50 rounded">
+                                        <p class="text-xs font-medium text-yellow-800">REMINDER: Set GPS before departing the airport</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Free Time -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-purple-500"></div>
+                            <div class="personal rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Free Time</h3>
+                                        <p class="text-gray-600 mt-1">1:25 PM - 3:00 PM MST</p>
+                                    </div>
+                                    <div class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Personal</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Suggested Activities:</span></p>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Grab lunch at a local restaurant</li>
+                                        <li>Review podcast notes</li>
+                                        <li>Rest before check-in</li>
+                                    </ul>
+                                    <p class="mt-2"><span class="font-medium">Nearby Restaurants:</span> Bear Paw Café (4.7★), Cappeletti's (4.5★)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Airbnb Check-in -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-green-500"></div>
+                            <div class="accommodation rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Airbnb Check-in</h3>
+                                        <p class="text-gray-600 mt-1">3:00 PM - 3:30 PM MST</p>
+                                    </div>
+                                    <div class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Accommodation</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Location:</span> SpringHill Suites St. George Washington</p>
+                                    <p><span class="font-medium">Address:</span> 122 North Green Spring Drive, Washington, Utah 84780</p>
+                                    <p><span class="font-medium">Confirmation #:</span> AIRBNB12345</p>
+                                    <p><span class="font-medium">Host Contact:</span> John Smith (555-123-4567)</p>
+                                    <p><span class="font-medium">Amenities:</span> Free WiFi, Fitness Center, Pool, Breakfast included</p>
+                                    <div class="mt-2 p-2 bg-green-50 rounded">
+                                        <p class="text-xs font-medium text-green-800">REMINDER: Check-in code will be sent via email 24 hours before arrival</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Free Time -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-purple-500"></div>
+                            <div class="personal rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Free Time</h3>
+                                        <p class="text-gray-600 mt-1">3:30 PM - 6:00 PM MST</p>
+                                    </div>
+                                    <div class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Personal</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Suggested Activities:</span></p>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Rest and settle in</li>
+                                        <li>Explore the area</li>
+                                        <li>Prepare for tomorrow's podcast</li>
+                                    </ul>
+                                    <p class="mt-2"><span class="font-medium">Nearby Attractions:</span> Red Cliffs Desert Reserve (10 min), Dinosaur Discovery Site (15 min)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Call with Daughter -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-purple-500"></div>
+                            <div class="personal rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Call with Daughter</h3>
+                                        <p class="text-gray-600 mt-1">6:00 PM - 6:30 PM MST (5:00 PM - 5:30 PM PST)</p>
+                                    </div>
+                                    <div class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Personal</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Note:</span> This is 5:00 PM Pacific Standard Time for your daughter in San Jose, CA</p>
+                                    <p><span class="font-medium">Contact:</span> Via FaceTime</p>
+                                    <div class="mt-2 p-2 bg-purple-50 rounded">
+                                        <p class="text-xs font-medium text-purple-800">REMINDER: Check WiFi connection at Airbnb before the call</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Dinner -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-purple-500"></div>
+                            <div class="personal rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Dinner</h3>
+                                        <p class="text-gray-600 mt-1">6:45 PM - 8:00 PM MST</p>
+                                    </div>
+                                    <div class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Personal</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Recommended Restaurants:</span></p>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Painted Pony (4.8★, Upscale American, 5 min drive)</li>
+                                        <li>Sakura Japanese Steakhouse (4.6★, Japanese, 7 min drive)</li>
+                                        <li>Viva Chicken (4.7★, Peruvian, 3 min drive)</li>
+                                    </ul>
+                                    <p class="mt-2"><span class="font-medium">Note:</span> Reservations recommended for Painted Pony</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- January 30 Schedule -->
+                <div id="content-jan30" class="tab-content">
+                    <div class="space-y-6 pl-8">
+                        <!-- Morning Walk -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-red-500"></div>
+                            <div class="activity rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Morning Walk (Sunrise)</h3>
+                                        <p class="text-gray-600 mt-1">7:38 AM - 8:38 AM MST</p>
+                                    </div>
+                                    <div class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Activity</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Note:</span> Sunrise in St. George, UT on January 30, 2025, is at 7:38 AM MST</p>
+                                    <p><span class="font-medium">Recommended Route:</span> Green Spring Drive Trail (starts near hotel)</p>
+                                    <p><span class="font-medium">Distance:</span> Approximately 2 miles round trip</p>
+                                    <p><span class="font-medium">Terrain:</span> Mostly flat, paved path</p>
+                                    <p><span class="font-medium">Weather:</span> Expected to be around 36°F at sunrise</p>
+                                    <div class="mt-2 p-2 bg-red-50 rounded">
+                                        <p class="text-xs font-medium text-red-800">REMINDER: Wear layers and bring water</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Breakfast -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-purple-500"></div>
+                            <div class="personal rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Breakfast</h3>
+                                        <p class="text-gray-600 mt-1">8:38 AM - 8:50 AM MST</p>
+                                    </div>
+                                    <div class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Personal</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Location:</span> Hotel breakfast (included with stay)</p>
+                                    <p><span class="font-medium">Breakfast Hours:</span> 6:30 AM - 9:30 AM</p>
+                                    <p><span class="font-medium">Options:</span> Continental breakfast with hot items</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Travel to Podcast Recording -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-yellow-500"></div>
+                            <div class="transport rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Travel to Podcast Recording</h3>
+                                        <p class="text-gray-600 mt-1">8:50 AM - 9:00 AM MST</p>
+                                    </div>
+                                    <div class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Transport</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Route:</span> Airbnb to Downtown Coworking Studio</p>
+                                    <p><span class="font-medium">Travel Time:</span> Approximately 10 minutes</p>
+                                    <p><span class="font-medium">Distance:</span> 4.5 miles</p>
+                                    <p><span class="font-medium">Directions:</span> Take Green Spring Dr to Telegraph St, then right on Red Rock Blvd</p>
+                                    <div class="mt-2 p-2 bg-yellow-50 rounded">
+                                        <p class="text-xs font-medium text-yellow-800">REMINDER: Allow extra time for parking</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Podcast Recording -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-red-500"></div>
+                            <div class="activity rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Podcast Recording: How to Delegate with Virtual Professionals</h3>
+                                        <p class="text-gray-600 mt-1">9:00 AM - 9:30 AM MST</p>
+                                    </div>
+                                    <div class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Activity</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Location:</span> Downtown Coworking Studio, St. George</p>
+                                    <p><span class="font-medium">Address:</span> 245 Red Rock Boulevard, St. George, UT 84770</p>
+                                    <p><span class="font-medium">Contact Person:</span> Mike Johnson, Producer (555-987-6543)</p>
+                                    <p><span class="font-medium">Podcast Name:</span> "The Delegation Experts"</p>
+                                    <p><span class="font-medium">Episode:</span> #42</p>
+                                    <div class="mt-2 p-2 bg-red-50 rounded">
+                                        <p class="text-xs font-medium text-red-800">REMINDER: Bring presentation materials and business cards</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Travel to Airport -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-yellow-500"></div>
+                            <div class="transport rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Travel to Airport for Car Return</h3>
+                                        <p class="text-gray-600 mt-1">9:30 AM - 10:10 AM MST</p>
+                                    </div>
+                                    <div class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Transport</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Route:</span> Downtown Coworking Studio to Airbnb to St. George Regional Airport (SGU)</p>
+                                    <p><span class="font-medium">Travel Time:</span> Approximately 40 minutes total</p>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Studio to Airbnb: 10 minutes</li>
+                                        <li>Time to collect luggage: 5 minutes</li>
+                                        <li>Airbnb to Airport: 25 minutes</li>
+                                    </ul>
+                                    <div class="mt-2 p-2 bg-yellow-50 rounded">
+                                        <p class="text-xs font-medium text-yellow-800">REMINDER: Check out of Airbnb and collect all belongings</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Free Time at Airport -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-purple-500"></div>
+                            <div class="personal rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Free Time at Airport</h3>
+                                        <p class="text-gray-600 mt-1">10:10 AM - 12:00 PM MST</p>
+                                    </div>
+                                    <div class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Personal</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Suggested Activities:</span></p>
+                                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                                        <li>Early lunch at airport café</li>
+                                        <li>Catch up on emails</li>
+                                        <li>Review podcast performance</li>
+                                    </ul>
+                                    <p class="mt-2"><span class="font-medium">Airport Amenities:</span> Free WiFi, café, gift shop</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Car Rental Return -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-yellow-500"></div>
+                            <div class="transport rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Car Rental Return</h3>
+                                        <p class="text-gray-600 mt-1">12:00 PM - 12:30 PM MST</p>
+                                    </div>
+                                    <div class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Transport</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Location:</span> St. George Regional Airport (SGU)</p>
+                                    <p><span class="font-medium">Address:</span> 4550 S. Airport Parkway, St George, UT 84790</p>
+                                    <p><span class="font-medium">Rental Company:</span> Enterprise Rent-A-Car</p>
+                                    <p><span class="font-medium">Return Time:</span> At least 1 hour before flight departure</p>
+                                    <div class="mt-2 p-2 bg-yellow-50 rounded">
+                                        <p class="text-xs font-medium text-yellow-800">REMINDER: Refuel car before returning to avoid additional fees</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Airport Check-in & Security -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-blue-500"></div>
+                            <div class="flight rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Airport Check-in & Security</h3>
+                                        <p class="text-gray-600 mt-1">12:30 PM - 1:08 PM MST</p>
+                                    </div>
+                                    <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Flight</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Location:</span> St. George Regional Airport (SGU)</p>
+                                    <p><span class="font-medium">Airline:</span> American Airlines</p>
+                                    <p><span class="font-medium">Recommended Arrival:</span> At least 1 hour before departure</p>
+                                    <div class="mt-2 p-2 bg-blue-50 rounded">
+                                        <p class="text-xs font-medium text-blue-800">REMINDER: Have ID and boarding pass ready for security</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Return Flight -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot bg-blue-500"></div>
+                            <div class="flight rounded-lg p-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-semibold text-lg">Flight: St. George (SGU) to Dallas/Fort Worth (DFW)</h3>
+                                        <p class="text-gray-600 mt-1">1:38 PM MST - 5:21 PM CST</p>
+                                    </div>
+                                    <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Flight</div>
+                                </div>
+                                <div class="mt-3 text-sm">
+                                    <p><span class="font-medium">Flight:</span> AA 6409, Operated by SkyWest Airlines as American Eagle</p>
+                                    <p><span class="font-medium">Seat:</span> 2A</p>
+                                    <p><span class="font-medium">Class:</span> Business (R)</p>
+                                    <p><span class="font-medium">Meals:</span> Lunch</p>
+                                    <p><span class="font-medium">Flight Duration:</span> 2 hours 43 minutes (plus 1 hour time zone change)</p>
+                                    <div class="mt-2 p-2 bg-blue-50 rounded">
+                                        <p class="text-xs font-medium text-blue-800">REMINDER: Adjust watch forward 1 hour upon arrival in Dallas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Packing Checklist -->
+            <div class="p-6 bg-gray-50 border-t">
+                <h2 class="text-xl font-semibold mb-4">Packing Checklist</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-medium mb-2">Documents</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="id" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="id" class="ml-2 text-sm">Photo ID / Driver's License</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="boarding" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="boarding" class="ml-2 text-sm">Boarding Passes</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="rental" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="rental" class="ml-2 text-sm">Car Rental Confirmation</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="airbnb" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="airbnb" class="ml-2 text-sm">Airbnb Confirmation</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="podcast" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="podcast" class="ml-2 text-sm">Podcast Materials</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium mb-2">Essentials</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="clothing" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="clothing" class="ml-2 text-sm">Clothing for 2 days</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="walking" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="walking" class="ml-2 text-sm">Walking shoes & warm layers</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="toiletries" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="toiletries" class="ml-2 text-sm">Toiletries</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="chargers" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="chargers" class="ml-2 text-sm">Phone & laptop chargers</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="medication" class="w-4 h-4 text-blue-600 rounded">
+                                <label for="medication" class="ml-2 text-sm">Medications</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Time Zone Information -->
+            <div class="bg-gray-50 p-6 border-t">
+                <h3 class="font-semibold text-lg mb-3">Time Zone Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="font-medium">St. George, Utah</span>
+                        </div>
+                        <p class="mt-1 text-sm text-gray-600">Mountain Standard Time (MST)</p>
+                        <p class="text-sm text-gray-600">UTC-7</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="font-medium">Dallas, Texas</span>
+                        </div>
+                        <p class="mt-1 text-sm text-gray-600">Central Standard Time (CST)</p>
+                        <p class="text-sm text-gray-600">UTC-6</p>
+                    </div>
+                </div>
+                <div class="mt-4 bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="font-medium">San Jose, California (Daughter's Location)</span>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-600">Pacific Standard Time (PST)</p>
+                    <p class="text-sm text-gray-600">UTC-8</p>
+                </div>
+                <div class="mt-4 bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-blue-800">Time Zone Conversion Guide</h4>
+                    <ul class="mt-2 space-y-1 text-sm text-blue-800">
+                        <li>Dallas is 1 hour ahead of St. George</li>
+                        <li>St. George is 1 hour ahead of San Jose</li>
+                        <li>Dallas is 2 hours ahead of San Jose</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Emergency Contacts -->
+            <div class="p-6 bg-white border-t">
+                <h2 class="text-xl font-semibold mb-4">Emergency Contacts</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-medium">Local Emergency Services</h3>
+                        <ul class="mt-2 space-y-2 text-sm">
+                            <li><span class="font-medium">Emergency:</span> 911</li>
+                            <li><span class="font-medium">St. George Regional Hospital:</span> (435) 251-1000</li>
+                            <li><span class="font-medium">St. George Police (non-emergency):</span> (435) 627-4300</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-medium">Travel Contacts</h3>
+                        <ul class="mt-2 space-y-2 text-sm">
+                            <li><span class="font-medium">American Airlines:</span> 1-800-433-7300</li>
+                            <li><span class="font-medium">Enterprise Rent-A-Car:</span> (435) 634-1023</li>
+                            <li><span class="font-medium">SpringHill Suites:</span> (435) 627-3111</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const contentId = 'content-' + tab.id.split('-')[1];
+                document.getElementById(contentId).classList.add('active');
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95b8217856c7fee4',t:'MTc1MTg5OTU4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
